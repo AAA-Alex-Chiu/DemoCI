@@ -1,0 +1,4 @@
+app_identifier "com.AAA.DemoCI" # The bundle identifier of your app
+apple_id "Alex@alex.com"
+
+team_id "TEAMID"  # Developer Portal Team ID

@@ -1,0 +1,24 @@
+//
+//  Develop.xcconfig
+//  DemoCI
+//
+//  Created by Alex on 11/1/16.
+//  Copyright © 2017 AAA. All rights reserved.
+//
+
+#include "DemoCI/Resources/xcconfig/Raizlabs-Account.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.DemoCI.develop
+PRODUCT_NAME = develop-$(TARGET_NAME)
+DEVELOPMENT_TEAM = xxxxxx // FIXME: Insert develop TEAM ID here
+
+CODE_SIGN_IDENTITY_DemoCI = iPhone Distribution
+PROVISIONING_PROFILE_DemoCI = xxxxxx // FIXME: Insert develop provisioning profile ID
+// CODE_SIGN_ENTITLEMENTS = DemoCI/develop-DemoCI.entitlements // Enable to allow custom debug entitlements
+
+FABRIC_API_KEY = $(INTERNAL_FABRIC_API_KEY)
+FABRIC_BUILD_SECRET = $(INTERNAL_BUILD_SECRET)
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = RZINTERNAL
+
+// This file must be included last to properly resolve the offical Xcode variables.
+#include "DemoCI/Resources/xcconfig/Global.xcconfig"
