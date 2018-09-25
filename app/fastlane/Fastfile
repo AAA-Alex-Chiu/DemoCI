@@ -131,14 +131,14 @@ platform :ios do
 
   desc "Builds and submits a Develop release to Hockey"
   lane :develop do
-    build("develop-DemoCI", 'enterprise', {
-      teamID: "XRTVVR644Y",
-      signingCertificate: "iPhone Distribution",
-      provisioningProfiles: { "com.raizlabs.DemoCI.develop" => "Raizlabs Generic Enterprise Profile" }
-    })    
-    hockey(public_identifier: 'ZZHOCKEY_DEVELOP_IDZZ')
-    # upload_symbols_to_crashlytics(:api_token => 'ZZCRASHLYTICS_API_TOKEN_DEVELOPZZ')
-    slack(message: "Successfully uploaded build #{build_number} to develop", success: true)
+    # build("develop-DemoCI", 'enterprise', {
+    #   teamID: "XRTVVR644Y",
+    #   signingCertificate: "iPhone Distribution",
+    #   provisioningProfiles: { "com.raizlabs.DemoCI.develop" => "Raizlabs Generic Enterprise Profile" }
+    # })    
+    # hockey(public_identifier: 'ZZHOCKEY_DEVELOP_IDZZ')
+    # # upload_symbols_to_crashlytics(:api_token => 'ZZCRASHLYTICS_API_TOKEN_DEVELOPZZ')
+    # slack(message: "Successfully uploaded build #{build_number} to develop", success: true)
   end
 
   desc "Builds and submits a Sprint release to Hockey"
