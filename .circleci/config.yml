@@ -40,53 +40,47 @@ jobs:
           command: |
             cd app
             bundle exec fastlane test
-      - run:
-          name: Code Coverage
-          when: always
-          command: |
-            cd app
-            bundle exec fastlane coverage
-      # Store xcov and slather Code Coverage HTML report artifacts
-      - store_artifacts:
-          path: /Users/distiller/project/app/build/xcov
-          destination: xcov
-      - store_artifacts:
-          path: /Users/distiller/project/app/build/slather
-          destination: slather
-      - store_artifacts:
-          path: /Users/distiller/project/app/build/scan
-          destination: scan
-      # Update Danger as soon as we have code coverage/tests, while waiting for screenshots to be generated
-      - run:
-          name: Danger
-          when: always
-          command: |
-            bundle exec danger
-      - run:
-          name: Upload to Codecov
-          when: always
-          command: bash <(curl -s https://codecov.io/bash) -f app/build/slather/cobertura.xml -X coveragepy -X gcov -X xcode      
-      - run:
-          name: Screenshots
-          when: always
-          command: |
-            cd app
-            bundle exec fastlane snapshot
-      - store_artifacts:
-          path: /Users/distiller/project/app/fastlane/screenshots
-          destination: screenshots
-      # Run Danger again once screenshots are complete
-      - run:
-          name: Danger
-          when: always
-          command: |
-            bundle exec danger
-      - run:
-          name: Post Screenshots to Slack
-          when: always
-          command: |
-            cd app
-            bundle exec fastlane slackshots
+      # - run:
+      #     name: Code Coverage
+      #     when: always
+      #     command: |
+      #       cd app
+      #       bundle exec fastlane coverage
+      # # Store xcov and slather Code Coverage HTML report artifacts
+      # - store_artifacts:
+      #     path: /Users/distiller/project/app/build/xcov
+      #     destination: xcov
+      # - store_artifacts:
+      #     path: /Users/distiller/project/app/build/slather
+      #     destination: slather
+      # - store_artifacts:
+      #     path: /Users/distiller/project/app/build/scan
+      #     destination: scan
+      # # Update Danger as soon as we have code coverage/tests, while waiting for screenshots to be generated
+      # - run:
+      #     name: Danger
+      #     when: always
+      #     command: |
+      #       bundle exec danger
+      # - run:
+      #     name: Upload to Codecov
+      #     when: always
+      #     command: bash <(curl -s https://codecov.io/bash) -f app/build/slather/cobertura.xml -X coveragepy -X gcov -X xcode      
+      # - run:
+      #     name: Screenshots
+      #     when: always
+      #     command: |
+      #       cd app
+      #       bundle exec fastlane snapshot
+      # - store_artifacts:
+      #     path: /Users/distiller/project/app/fastlane/screenshots
+      #     destination: screenshots
+      # # Run Danger again once screenshots are complete
+      # - run:
+      #     name: Danger
+      #     when: always
+      #     command: |
+      #       bundle exec danger
             
   integration:
     macos:
